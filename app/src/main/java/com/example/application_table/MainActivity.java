@@ -1,108 +1,89 @@
 package com.example.application_table;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.application_table.adapter.AdapterNewClub;
-import com.example.application_table.entity.NewClubBean;
 import com.leaf.library.StatusBarUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * 从mainactivity通过广播传到Self的数据接受不到？？？
- * 点击右上角下一步，页面跳转到第二张申请表，数据传输到Self页面
- */
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView tv;
-    private TextView tv1;
-    private TextView tv2;
-    private TextView tv3;
 
-    private Toolbar toolbar;
-    private ListView listView;
-    //  private AdpNewClub adapter;
-    private AdapterNewClub adapter;
-    private List<NewClubBean> clubList;
-    private List<NewClubBean> list;
+    private Button button;
+
+    private ImageView imgFirst;//迎新主照片
+
+    private ImageView imgRecruit;//社团招新
+    private ImageView imgSort;//社团分类
+    private ImageView imgRecommend;//社团推荐
+    private ImageView imgFind;//寻找社团
+    private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv = findViewById(R.id.tv);
-        tv.setText("所有");
-        tv.setOnClickListener(this);
-        tv1 = findViewById(R.id.tv1);
-        tv1.setText("文化类");
-        tv1.setOnClickListener(this);
-        tv2 = findViewById(R.id.tv2);
-        tv2.setText("公益类");
-        tv2.setOnClickListener(this);
-        tv3 = findViewById(R.id.tv3);
-        tv3.setText("体育类");
-        tv3.setOnClickListener(this);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);//自定义标题栏
-        StatusBarUtil.setGradientColor(this, toolbar);//设置沉浸式状态栏
-        clubList = new ArrayList<>();
-        list = new ArrayList<>();
-        NewClubBean bean1 = new NewClubBean("青年志愿者协会","1220名会员","公益类");
-        clubList.add(bean1);
-        NewClubBean bean2 = new NewClubBean("衿易社团","350名会员","文化类");
-        clubList.add(bean2);
-        NewClubBean bean3 = new NewClubBean("篮球社团","320名会员","体育类");
-        clubList.add(bean3);
-        adapter = new AdapterNewClub(MainActivity.this,R.layout.adp_new_club,clubList);
-        listView = findViewById(R.id.listview);
-        listView.setAdapter(adapter);
+        initVariable();
+        StatusBarUtil.setGradientColor(this, mToolbar);
+
+    }
+
+    public void initVariable(){
+        imgFirst = findViewById(R.id.img_first);
+        imgRecruit = findViewById(R.id.img_recruit);
+        imgSort = findViewById(R.id.img_sort);
+        imgRecommend = findViewById(R.id.img_recommend);
+        imgFind = findViewById(R.id.img_find);
+        mToolbar = findViewById(R.id.mToolbar);
+        button = findViewById(R.id.button);
+        imgRecruit.setOnClickListener(this);
+        imgSort.setOnClickListener(this);
+        imgRecommend.setOnClickListener(this);
+        imgFind.setOnClickListener(this);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.first_club);
+        imgFirst.setImageDrawable(rectRoundBitmap(bitmap));
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.tv:
-                adapter = new AdapterNewClub(MainActivity.this,R.layout.adp_new_club,clubList);
-                listView.setAdapter(adapter);
+            case R.id.img_recruit://点击"社团招新"
+                Intent intent1 = new Intent(MainActivity.this,Club.class);
+                startActivity(intent1);
                 break;
-            case R.id.tv1://文化类
-                list = new ArrayList<>();
-                for (NewClubBean club:clubList){
-                    if (club.getType() == tv1.getText()){
-                        list.add(club);
-                    }
-                }
-                adapter = new AdapterNewClub(MainActivity.this,R.layout.adp_new_club,list);
-                listView.setAdapter(adapter);
-
+            case R.id.img_sort://点击"社团分类"
+                Intent intent2 = new Intent(MainActivity.this,Sort.class);
+                startActivity(intent2);
+                Toast.makeText(this, "sfdf", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.tv2:
-                list = new ArrayList<>();
-                for (NewClubBean club:clubList){
-                    if (club.getType() == tv2.getText()){
-                        list.add(club);
-                    }
-                }
-                adapter = new AdapterNewClub(MainActivity.this,R.layout.adp_new_club,list);
-                listView.setAdapter(adapter);
+            case R.id.img_recommend://点击"社团推荐"
+                Intent intent3 = new Intent(MainActivity.this,ScrollBanner.class);
+                startActivity(intent3);
                 break;
-            case R.id.tv3:
-                list = new ArrayList<>();
-                for (NewClubBean club:clubList){
-                    if (club.getType() == tv3.getText()){
-                        list.add(club);
-                    }
-                }
-                adapter = new AdapterNewClub(MainActivity.this,R.layout.adp_new_club,list);
-                listView.setAdapter(adapter);
+            case R.id.img_find://点击"寻找社团"
                 break;
-//        }
+            case R.id.button:
+                Intent intent4 = new Intent(MainActivity.this,Main1Activity.class);
+                startActivity(intent4);
+                break;
         }
+    }
+    private RoundedBitmapDrawable rectRoundBitmap(Bitmap bitmap){
+//创建RoundedBitmapDrawable对象
+        RoundedBitmapDrawable roundImg = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+//抗锯齿
+        roundImg.setAntiAlias(true);
+//设置圆角半径
+        roundImg.setCornerRadius(50);
+        return roundImg;
     }
 }

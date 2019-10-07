@@ -3,7 +3,9 @@ package com.example.application_table;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
+import com.leaf.library.StatusBarUtil;
 import com.zt.simplebanner.OnBannerClickListener;
 import com.zt.simplebanner.scroll.ScrollBannerPointView;
 
@@ -12,11 +14,13 @@ import java.util.List;
 
 public class ScrollBanner extends AppCompatActivity implements OnBannerClickListener {
 
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrollbanner);
-
+        mToolbar = findViewById(R.id.mToolbar);
+        StatusBarUtil.setGradientColor(this, mToolbar);
         ScrollBannerView scrollBannerView = findViewById(R.id.scroll_banner_view);
         scrollBannerView.bindData(getData());
         scrollBannerView.setOnBannerClickListener(this);

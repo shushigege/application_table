@@ -18,7 +18,9 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ApplyTable"></activity>
         <activity android:name=".Self" />
+        <activity android:name=".Club"/>
         <activity android:name=".ScrollBanner"/>
+        <activity android:name=".Sort"/>
         <activity android:name=".ApplicationTable2" />
         <activity android:name=".MainActivity">
             <intent-filter>

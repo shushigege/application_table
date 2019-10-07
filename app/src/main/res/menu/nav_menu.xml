@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/art_club"
+            android:title="文艺类社团"
+           />
+
+        <item
+            android:id="@+id/public_club"
+            android:title="公益类社团"/>
+
+        <item
+            android:id="@+id/created_club"
+            android:title="创新创业类社团"/>
+
+        <item
+            android:id="@+id/sport_club"
+            android:title="体育运动类社团"/>
+
+
+        <item
+            android:id="@+id/sci_cre_club"
+            android:title="科技创造类社团"/>
+
+        <item
+            android:id="@+id/tra_cul_club"
+            android:title="传统文化类社团"/>
+
+        <item
+            android:id="@+id/the_res_club"
+            android:title="理论研究类社团"/>
+
+        <item
+            android:id="@+id/ass_Union"
+            android:title="社团联合会"/>
+
+
+    </group>
+
+
+</menu>

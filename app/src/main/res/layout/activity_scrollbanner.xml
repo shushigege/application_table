@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbar"
+        android:background="@drawable/toolbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+
     <com.example.application_table.ScrollBannerView
         android:id="@+id/scroll_banner_view"
         android:layout_width="match_parent"

@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.application_table.ApplyTable;
 import com.example.application_table.Constant;
@@ -53,7 +52,6 @@ public class AdapterNewClub extends ArrayAdapter<NewClubBean> {
                 Intent intent = new Intent(v.getContext(), ApplyTable.class);
                 Constant.club = bean.getType();
                 v.getContext().startActivity(intent);
-                Toast.makeText(mContext, "oop", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

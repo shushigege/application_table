@@ -1,72 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        app:title="社团招新介绍"
+        android:id="@+id/mToolbar"
         android:background="@drawable/toolbar_bg"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
-    <com.example.application_table.HorizontalExpandMenu
-        android:id="@+id/menu"
-        android:layout_below="@id/toolbar"
+        android:layout_height="2dp"/>
+
+    <ImageView
+        android:id="@+id/img_first"
+        android:background="@drawable/first_club"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:clickable="true">
-            <TextView
-                android:id="@+id/tv"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:clickable="true"
-                android:text="item1"/>
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:clickable="true"
-                android:text="item1"/>
-            <TextView
-                android:id="@+id/tv2"
-                android:clickable="true"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="item2"/>
-            <TextView
-                android:id="@+id/tv3"
-                android:clickable="true"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="item3"/>
-        </LinearLayout>
-    </com.example.application_table.HorizontalExpandMenu>
-    <ListView
-        android:id="@+id/listview"
+        android:layout_height="0dp"
+        android:layout_weight="4"/>
+
+    <LinearLayout
         android:padding="10dp"
-        android:layout_below="@id/menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+       >
+            <ImageView
+                android:id="@+id/img_recruit"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:background="@drawable/recruit_new"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_gravity="center"
+                android:text="社团招新"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+        >
+            <ImageView
+                android:id="@+id/img_sort"
+                android:clickable="true"
+                android:layout_gravity="center"
+                android:background="@drawable/sort"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_gravity="center"
+                android:text="社团分类"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+     >
+            <ImageView
+                android:id="@+id/img_recommend"
+                android:clickable="true"
+                android:layout_gravity="center"
+                android:background="@drawable/recommend"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_gravity="center"
+                android:text="社团推荐"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+         >
+            <ImageView
+                android:id="@+id/img_find"
+                android:layout_gravity="center"
+                android:background="@drawable/find"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:clickable="true"/>
+            <TextView
+                android:layout_gravity="center"
+                android:text="寻找社团"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:text="活动"
+        android:background="@drawable/button_cicle_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<LinearLayout-->
+        <!--android:padding="10dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="推荐活动" />-->
+        <!--<TextView-->
+            <!--android:text="预告活动"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<TextView-->
+            <!--android:text="正在进行"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<TextView-->
+            <!--android:text="已完成"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"/>-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

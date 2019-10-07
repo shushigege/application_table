@@ -53,7 +53,6 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.datatype.BmobFile;
@@ -144,14 +143,14 @@ public class ApplyTable extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_table);
 
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ApplyTable.this,ScrollBanner.class);
-                startActivity(intent);
-            }
-        });
+//        button = findViewById(R.id.button);
+////        button.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                Intent intent = new Intent(ApplyTable.this,ScrollBanner.class);
+////                startActivity(intent);
+////            }
+////        });
 
         Bmob.initialize(this, "9a2acdeeb4019669e12e1226b8ffb45d");
         SharedPreferencesUtil.getInstance(this, "clazz");//选择班级的表
@@ -295,131 +294,131 @@ public class ApplyTable extends AppCompatActivity implements View.OnClickListene
      */
     public void ClazzChoose(){
 
-        //学院
+//        //学院
         ArrayList<ClazzData> list = new ArrayList<>();
-        list = null;
-        //sp中获取学院名称，并添加到list中
-        //下一步：为list中每个元素添加专业
-        list.addAll(SharedPreferencesUtil.getListData("clazzData",ClazzData.class));
-        ArrayList<ClazzData.MajorBean> majorBeans = new ArrayList<>();
-        majorBeans = null;
-        String clazzData = "";
-        for (int i=0;i<list.size();i++){
-            clazzData = list.get(i).getName();
-            //根据学院名称clazz查找数据库中
-            majorBeans.addAll(SharedPreferencesUtil.getListData(clazzData,ClazzData.MajorBean.class));
-            list.get(i).setMajor(majorBeans);
-        }
-        String major = "";
-        for (int i=0;i<list.size();i++){//遍历学院
-            List<ClazzData.MajorBean> majorList = list.get(i).getMajor();
-            for (int j=0;j<majorList.size();j++){//遍历第i个学院下的专业
-                //正在查询的第j个专业名字
-                String majorName = majorList.get(j).getName();
-                List<String> clazz = new ArrayList<>();
-                //此专业下的班级列表
-                clazz.addAll(SharedPreferencesUtil.getListData(majorName,String.class));
-                //将班级添加到此专业下
-                majorList.get(j).setClazz(clazz);
-            }
-        }
-//        //添加3个学院
-//        ClazzData data1 = new ClazzData();
-//        ClazzData data2 = new ClazzData();
-//        ClazzData data3 = new ClazzData();
-//        data1.setName("电子与信息工程学院");
-//        data2.setName("经管学院");
-//        data3.setName("土木学院");
-//        //添加专业（学院下面的数据）
-//        ArrayList<ClazzData.MajorBean> majorBeans1 = new ArrayList<>();
-//        ArrayList<ClazzData.MajorBean> majorBeans2 = new ArrayList<>();
-//        ArrayList<ClazzData.MajorBean> majorBeans3 = new ArrayList<>();
-//        //第一个学院下面的专业数据
-//        ClazzData.MajorBean majorBean1 = new ClazzData.MajorBean();
-//        ClazzData.MajorBean majorBean2 = new ClazzData.MajorBean();
-//        ClazzData.MajorBean majorBean3 = new ClazzData.MajorBean();
-//        majorBean1.setName("物联网");
-//        majorBean2.setName("计算机科学与技术");
-//        majorBean3.setName("网络工程");
-//        majorBeans1.add(majorBean1);
-//        majorBeans1.add(majorBean2);
-//        majorBeans1.add(majorBean3);
-//        //第二个学院下面的专业数据
-//        ClazzData.MajorBean majorBean4 = new ClazzData.MajorBean();
-//        ClazzData.MajorBean majorBean5 = new ClazzData.MajorBean();
-//        ClazzData.MajorBean majorBean6 = new ClazzData.MajorBean();
-//        majorBean4.setName("A");
-//        majorBean5.setName("B");
-//        majorBean6.setName("C");
-//        majorBeans2.add(majorBean4);
-//        majorBeans2.add(majorBean5);
-//        majorBeans2.add(majorBean6);
-//        //第三个学院下面的专业数据
-//        ClazzData.MajorBean majorBean7 = new ClazzData.MajorBean();
-//        ClazzData.MajorBean majorBean8 = new ClazzData.MajorBean();
-//        ClazzData.MajorBean majorBean9 = new ClazzData.MajorBean();
-//        majorBean7.setName("1");
-//        majorBean8.setName("2");
-//        majorBean9.setName("3");
-//        majorBeans3.add(majorBean7);
-//        majorBeans3.add(majorBean8);
-//        majorBeans3.add(majorBean9);
-//        //为专业添加班级
-//        ArrayList<String> clazz1 = new ArrayList<>();
-//        ArrayList<String> clazz2 = new ArrayList<>();
-//        ArrayList<String> clazz3 = new ArrayList<>();
-//        ArrayList<String> clazz4 = new ArrayList<>();
-//        ArrayList<String> clazz5 = new ArrayList<>();
-//        ArrayList<String> clazz6 = new ArrayList<>();
-//        ArrayList<String> clazz7 = new ArrayList<>();
-//        ArrayList<String> clazz8 = new ArrayList<>();
-//        ArrayList<String> clazz9 = new ArrayList<>();
-//        clazz1.add("1班");
-//        clazz1.add("2班");
-//        clazz1.add("3班");
-//        clazz2.add("1班");
-//        clazz2.add("2班");
-//        clazz2.add("3班");
-//        clazz3.add("1班");
-//        clazz3.add("2班");
-//        clazz3.add("3班");
-//        clazz4.add("1班");
-//        clazz4.add("2班");
-//        clazz4.add("3班");
-//        clazz5.add("1班");
-//        clazz5.add("2班");
-//        clazz5.add("3班");
-//        clazz6.add("1班");
-//        clazz6.add("2班");
-//        clazz6.add("3班");
-//        clazz7.add("1班");
-//        clazz7.add("2班");
-//        clazz7.add("3班");
-//        clazz8.add("1班");
-//        clazz8.add("2班");
-//        clazz8.add("3班");
-//        clazz9.add("1班");
-//        clazz9.add("2班");
-//        clazz9.add("3班");
-//
-//        //将班级添加到专业中
-//        majorBean1.setClazz(clazz1);
-//        majorBean2.setClazz(clazz2);
-//        majorBean3.setClazz(clazz3);
-//        majorBean4.setClazz(clazz4);
-//        majorBean5.setClazz(clazz5);
-//        majorBean6.setClazz(clazz6);
-//        majorBean7.setClazz(clazz7);
-//        majorBean8.setClazz(clazz8);
-//        majorBean9.setClazz(clazz9);
-//        //将专业添加到学院下
-//        data1.setMajor(majorBeans1);
-//        data2.setMajor(majorBeans2);
-//        data3.setMajor(majorBeans3);
-//
-//        list.add(data1);
-//        list.add(data2);
-//        list.add(data3);
+//        list = null;
+//        //sp中获取学院名称，并添加到list中
+//        //下一步：为list中每个元素添加专业
+//        list.addAll(SharedPreferencesUtil.getListData("clazzData",ClazzData.class));
+//        ArrayList<ClazzData.MajorBean> majorBeans = new ArrayList<>();
+//        majorBeans = null;
+//        String clazzData = "";
+//        for (int i=0;i<list.size();i++){
+//            clazzData = list.get(i).getName();
+//            //根据学院名称clazz查找数据库中
+//            majorBeans.addAll(SharedPreferencesUtil.getListData(clazzData,ClazzData.MajorBean.class));
+//            list.get(i).setMajor(majorBeans);
+//        }
+//        String major = "";
+//        for (int i=0;i<list.size();i++){//遍历学院
+//            List<ClazzData.MajorBean> majorList = list.get(i).getMajor();
+//            for (int j=0;j<majorList.size();j++){//遍历第i个学院下的专业
+//                //正在查询的第j个专业名字
+//                String majorName = majorList.get(j).getName();
+//                List<String> clazz = new ArrayList<>();
+//                //此专业下的班级列表
+//                clazz.addAll(SharedPreferencesUtil.getListData(majorName,String.class));
+//                //将班级添加到此专业下
+//                majorList.get(j).setClazz(clazz);
+//            }
+//        }
+        //添加3个学院
+        ClazzData data1 = new ClazzData();
+        ClazzData data2 = new ClazzData();
+        ClazzData data3 = new ClazzData();
+        data1.setName("电子与信息工程学院");
+        data2.setName("经管学院");
+        data3.setName("土木学院");
+        //添加专业（学院下面的数据）
+        ArrayList<ClazzData.MajorBean> majorBeans1 = new ArrayList<>();
+        ArrayList<ClazzData.MajorBean> majorBeans2 = new ArrayList<>();
+        ArrayList<ClazzData.MajorBean> majorBeans3 = new ArrayList<>();
+        //第一个学院下面的专业数据
+        ClazzData.MajorBean majorBean1 = new ClazzData.MajorBean();
+        ClazzData.MajorBean majorBean2 = new ClazzData.MajorBean();
+        ClazzData.MajorBean majorBean3 = new ClazzData.MajorBean();
+        majorBean1.setName("物联网");
+        majorBean2.setName("计算机科学与技术");
+        majorBean3.setName("网络工程");
+        majorBeans1.add(majorBean1);
+        majorBeans1.add(majorBean2);
+        majorBeans1.add(majorBean3);
+        //第二个学院下面的专业数据
+        ClazzData.MajorBean majorBean4 = new ClazzData.MajorBean();
+        ClazzData.MajorBean majorBean5 = new ClazzData.MajorBean();
+        ClazzData.MajorBean majorBean6 = new ClazzData.MajorBean();
+        majorBean4.setName("A");
+        majorBean5.setName("B");
+        majorBean6.setName("C");
+        majorBeans2.add(majorBean4);
+        majorBeans2.add(majorBean5);
+        majorBeans2.add(majorBean6);
+        //第三个学院下面的专业数据
+        ClazzData.MajorBean majorBean7 = new ClazzData.MajorBean();
+        ClazzData.MajorBean majorBean8 = new ClazzData.MajorBean();
+        ClazzData.MajorBean majorBean9 = new ClazzData.MajorBean();
+        majorBean7.setName("1");
+        majorBean8.setName("2");
+        majorBean9.setName("3");
+        majorBeans3.add(majorBean7);
+        majorBeans3.add(majorBean8);
+        majorBeans3.add(majorBean9);
+        //为专业添加班级
+        ArrayList<String> clazz1 = new ArrayList<>();
+        ArrayList<String> clazz2 = new ArrayList<>();
+        ArrayList<String> clazz3 = new ArrayList<>();
+        ArrayList<String> clazz4 = new ArrayList<>();
+        ArrayList<String> clazz5 = new ArrayList<>();
+        ArrayList<String> clazz6 = new ArrayList<>();
+        ArrayList<String> clazz7 = new ArrayList<>();
+        ArrayList<String> clazz8 = new ArrayList<>();
+        ArrayList<String> clazz9 = new ArrayList<>();
+        clazz1.add("1班");
+        clazz1.add("2班");
+        clazz1.add("3班");
+        clazz2.add("1班");
+        clazz2.add("2班");
+        clazz2.add("3班");
+        clazz3.add("1班");
+        clazz3.add("2班");
+        clazz3.add("3班");
+        clazz4.add("1班");
+        clazz4.add("2班");
+        clazz4.add("3班");
+        clazz5.add("1班");
+        clazz5.add("2班");
+        clazz5.add("3班");
+        clazz6.add("1班");
+        clazz6.add("2班");
+        clazz6.add("3班");
+        clazz7.add("1班");
+        clazz7.add("2班");
+        clazz7.add("3班");
+        clazz8.add("1班");
+        clazz8.add("2班");
+        clazz8.add("3班");
+        clazz9.add("1班");
+        clazz9.add("2班");
+        clazz9.add("3班");
+
+        //将班级添加到专业中
+        majorBean1.setClazz(clazz1);
+        majorBean2.setClazz(clazz2);
+        majorBean3.setClazz(clazz3);
+        majorBean4.setClazz(clazz4);
+        majorBean5.setClazz(clazz5);
+        majorBean6.setClazz(clazz6);
+        majorBean7.setClazz(clazz7);
+        majorBean8.setClazz(clazz8);
+        majorBean9.setClazz(clazz9);
+        //将专业添加到学院下
+        data1.setMajor(majorBeans1);
+        data2.setMajor(majorBeans2);
+        data3.setMajor(majorBeans3);
+
+        list.add(data1);
+        list.add(data2);
+        list.add(data3);
 
         options1Items = list;
         for (int i = 0; i < list.size(); i++) {//遍历学院

@@ -105,7 +105,7 @@ public class Self extends AppCompatActivity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.action_next://下一步
+            case R.id.action_success://完成
                 //接受上一个页面的部门信息和手机号码
                 Intent intent = getIntent();
                 String sector = intent.getStringExtra("sector");
@@ -129,7 +129,7 @@ public class Self extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void done(String s, BmobException e) {
                         if (e == null){
-                            Toast.makeText(Self.this, "添加成功"+s, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(Self.this, "添加成功"+s, Toast.LENGTH_SHORT).show();
                             Log.d("TAG", "done: "+s);
                             Constant.s = s;
                         }else {
@@ -155,6 +155,8 @@ public class Self extends AppCompatActivity implements View.OnClickListener {
                         }
                     });
                 }
+                Intent intent1 = new Intent(Self.this, MainActivity.class);
+                startActivity(intent1);
                 break;
         }
         return super.onOptionsItemSelected(item);
