@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initVariable();
         StatusBarUtil.setGradientColor(this, mToolbar);
 
+
     }
 
     public void initVariable(){
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.img_sort://点击"社团分类"
                 Intent intent2 = new Intent(MainActivity.this,Sort.class);
                 startActivity(intent2);
-                Toast.makeText(this, "sfdf", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "你点击了社团分类！", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_recommend://点击"社团推荐"
                 Intent intent3 = new Intent(MainActivity.this,ScrollBanner.class);
@@ -72,8 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.img_find://点击"寻找社团"
                 break;
             case R.id.button:
-                Intent intent4 = new Intent(MainActivity.this,Main1Activity.class);
-                startActivity(intent4);
+//                Intent intent4 = new Intent(MainActivity.this,Main1Activity.class);
+//                startActivity(intent4);
+                Toast.makeText(this,"你点击了活动！",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
